@@ -2,7 +2,6 @@ package com.tul.demo.service
 
 import com.tul.demo.model.Cart
 import com.tul.demo.model.ProductsCarts
-import com.tul.demo.repository.CartRepository
 import com.tul.demo.repository.ProductsCarsRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -23,7 +22,11 @@ class ProductCartServiceImpl : ProductCartService {
         repository.saveAll(carts)
     }
 
-    override fun deleteByCart(cart: Cart){
+    override fun getByCart(cart: Cart): List<ProductsCarts>{
+       return repository.getByCartId(cart)
+    }
+
+    override fun deleteByCart(cart: Cart) {
         repository.deleteByCartId(cart)
     }
 }

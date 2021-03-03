@@ -11,5 +11,9 @@ interface ProductCartService {
 
     fun addMultipleProductsCars(carts: List<ProductsCarts>)
 
+    fun getByCart(cart: Cart): List<ProductsCarts>
+
     fun deleteByCart(cart: Cart)
+
+
 }

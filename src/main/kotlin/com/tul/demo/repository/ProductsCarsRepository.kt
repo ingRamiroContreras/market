@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ProductsCarsRepository : CrudRepository<ProductsCarts, Long> {
 
+    fun getByCartId(cart: Cart): List<ProductsCarts>
     fun deleteByCartId(cart: Cart)
-
 }
