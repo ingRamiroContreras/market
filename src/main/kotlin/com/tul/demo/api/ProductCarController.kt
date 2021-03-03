@@ -23,18 +23,16 @@ class ProductCarController(
 
 
     @GetMapping("/products/carts/{id}")
-    fun getCartById(@PathVariable id: Long): Map<Cart, List<ProductWithQuantity>> {
+    fun getCartById(@PathVariable id: Long): List<ProductWithQuantity> {
 
         try {
             var cart = cartService.findById(id)
             var productsCarsList = productCarsService.getByCart(cart)
-
             isValidProductsCarsList(productsCarsList)
-            return productsCarsList.groupBy(
-                keySelector = { e -> e.cartId },
-                valueTransform = { e -> ProductWithQuantity(e.productId, e.quantity) })
+            return productsCarsList.stream().map { p -> ProductWithQuantity(p.productId, p.quantity) }
+                .collect(Collectors.toList())
         } catch (e: Exception) {
-            return mapOf()
+            return listOf()
         }
     }
 

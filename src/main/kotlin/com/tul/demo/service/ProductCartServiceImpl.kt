@@ -5,6 +5,7 @@ import com.tul.demo.model.ProductsCarts
 import com.tul.demo.repository.ProductsCarsRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import javax.transaction.Transactional
 
 @Service
 class ProductCartServiceImpl : ProductCartService {
@@ -25,7 +26,7 @@ class ProductCartServiceImpl : ProductCartService {
     override fun getByCart(cart: Cart): List<ProductsCarts>{
        return repository.getByCartId(cart)
     }
-
+    @Transactional
     override fun deleteByCart(cart: Cart) {
         repository.deleteByCartId(cart)
     }
