@@ -8,14 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class ProductCarService {
+class ProductCartServiceImpl : ProductCartService {
 
     @Autowired
     lateinit var repository: ProductsCarsRepository
 
-    fun findAllProductsCars() = repository.findAll()
+    override fun findAllProductsCars() = repository.findAll()
 
-    fun addProductCar(cart: ProductsCarts) {
+    override fun addProductCar(cart: ProductsCarts) {
         repository.save(cart)
+    }
+
+    override fun addMultipleProductsCars(carts: List<ProductsCarts>) {
+        repository.saveAll(carts)
+    }
+
+    override fun deleteByCart(cart: Cart){
+        repository.deleteByCartId(cart)
     }
 }

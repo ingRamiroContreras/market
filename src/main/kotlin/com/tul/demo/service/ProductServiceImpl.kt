@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class ProductService {
+class ProductServiceImpl : ProducService {
 
     @Autowired
     lateinit var repository: ProductRepository
 
-    fun findAllProducts() = repository.findAll()
+    override fun findAllProducts() = repository.findAll()
 
-    fun findById(id: Long): Optional<Product> {
+    override fun findById(id: Long): Optional<Product> {
         return repository.findById(id)
     }
 

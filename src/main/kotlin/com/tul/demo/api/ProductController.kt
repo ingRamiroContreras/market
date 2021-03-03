@@ -1,6 +1,6 @@
 package com.tul.demo.api
 
-import com.tul.demo.service.ProductService
+import com.tul.demo.service.ProductServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController
 class ProductController {
 
     @Autowired
-    lateinit var service: ProductService
+    lateinit var serviceImpl: ProductServiceImpl
 
     @GetMapping("/products")
-    fun getAllUsers() = service.findAllProducts()
+    fun getAllUsers() = serviceImpl.findAllProducts()
 
 }

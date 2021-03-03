@@ -7,7 +7,8 @@ class Cart(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long = 0,
-    var status: String = "",
+    var name: String = "",
+    var status: EnumCartSate = EnumCartSate.NEW,
 ){
 
     override fun toString(): String {
